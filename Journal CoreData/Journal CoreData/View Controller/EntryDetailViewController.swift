@@ -51,5 +51,6 @@ class EntryDetailViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
     
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
 }

@@ -11,11 +11,12 @@ import CoreData
 
 extension Entry{
     
-    convenience init(title: String, bodyText: String, date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(title: String, bodyText: String, date: Date = Date(), mood: MoodType = .normal, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.title = title
         self.bodyText = bodyText
-        self.date = date 
+        self.date = date
+        self.mood = mood.rawValue
         
     }
 }

@@ -12,6 +12,8 @@
 		EB5B3F2D21EE958000CB329E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5B3F2B21EE958000CB329E /* Main.storyboard */; };
 		EB5B3F2F21EE958400CB329E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5B3F2E21EE958400CB329E /* Assets.xcassets */; };
 		EB5B3F3221EE958400CB329E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5B3F3021EE958400CB329E /* LaunchScreen.storyboard */; };
+		EB5B3F3E21EE9A9900CB329E /* Entry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB5B3F3C21EE9A9900CB329E /* Entry.xcdatamodeld */; };
+		EB5B3F4121EE9C8000CB329E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B3F4021EE9C8000CB329E /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		EB5B3F2E21EE958400CB329E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB5B3F3121EE958400CB329E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB5B3F3321EE958400CB329E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB5B3F3D21EE9A9900CB329E /* Entry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Entry.xcdatamodel; sourceTree = "<group>"; };
+		EB5B3F4021EE9C8000CB329E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,10 @@
 		EB5B3F2621EE958000CB329E /* New Journal */ = {
 			isa = PBXGroup;
 			children = (
+				EB5B3F3F21EE9C5500CB329E /* CoreData */,
+				EB5B3F3B21EE9A7300CB329E /* Model */,
+				EB5B3F3A21EE9A6100CB329E /* Model Controller */,
+				EB5B3F3921EE9A5000CB329E /* View Controller */,
 				EB5B3F2721EE958000CB329E /* AppDelegate.swift */,
 				EB5B3F2921EE958000CB329E /* ViewController.swift */,
 				EB5B3F2B21EE958000CB329E /* Main.storyboard */,
@@ -62,6 +70,36 @@
 				EB5B3F3321EE958400CB329E /* Info.plist */,
 			);
 			path = "New Journal";
+			sourceTree = "<group>";
+		};
+		EB5B3F3921EE9A5000CB329E /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		EB5B3F3A21EE9A6100CB329E /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		EB5B3F3B21EE9A7300CB329E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB5B3F3C21EE9A9900CB329E /* Entry.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB5B3F3F21EE9C5500CB329E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EB5B3F4021EE9C8000CB329E /* CoreDataStack.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB5B3F3E21EE9A9900CB329E /* Entry.xcdatamodeld in Sources */,
 				EB5B3F2A21EE958000CB329E /* ViewController.swift in Sources */,
 				EB5B3F2821EE958000CB329E /* AppDelegate.swift in Sources */,
+				EB5B3F4121EE9C8000CB329E /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +374,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EB5B3F3C21EE9A9900CB329E /* Entry.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EB5B3F3D21EE9A9900CB329E /* Entry.xcdatamodel */,
+			);
+			currentVersion = EB5B3F3D21EE9A9900CB329E /* Entry.xcdatamodel */;
+			path = Entry.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB5B3F1C21EE958000CB329E /* Project object */;
 }
