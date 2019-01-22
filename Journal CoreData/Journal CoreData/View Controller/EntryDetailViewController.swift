@@ -22,6 +22,11 @@ class EntryDetailViewController: UIViewController {
             title =  entry?.title
             titleTextField.text = entry?.title
             textView.text = entry?.bodyText
+
+            let mood = entry?.moodType ?? .normal
+            let moodIndex = MoodType.allCases.index(of: mood)!
+            segmentedControl.selectedSegmentIndex = moodIndex
+            
         }
     }
     
@@ -34,23 +39,22 @@ class EntryDetailViewController: UIViewController {
     @IBAction func save(_ sender: Any) {
         guard let title = titleTextField.text,
         let bodyText = textView.text else {return}
+        let indexSegment = segmentedControl.selectedSegmentIndex
+        let mood = MoodType.allCases[indexSegment].rawValue
+
         if let entry = entry{
-            entry.title = title
-            entry.bodyText = bodyText
+            entryController.update(entry: entry, title: title, bodytext: bodyText, mood: mood)
         }else{
-            let _ = Entry(title: title, bodyText: bodyText)
+            let _ = Entry(title: title, bodyText: bodyText, mood: MoodType(rawValue: mood)!)
+            entryController.saveToPersistence()
         }
-        
-        do{
-            try moc.save()
-        }catch{
-            NSLog("Error saving Entry: \(error)")
-        }
+
        navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    let entryController = EntryController()
     
 }
