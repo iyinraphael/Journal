@@ -9,8 +9,8 @@
 import Foundation
 
 enum MoodType: String, CaseIterable {
-    case normal = "😐"
     case sad = "😟"
+    case normal = "😐"
     case happy = "😊"
     
 }
