@@ -21,6 +21,9 @@ extension Entry{
         
         
     }
+    convenience init?(entryRepresentation: EntryRepresentation, manageObjectContext: NSManagedObjectContext = CoreDataStack.shared.mainContext){
+        self.init(title: entryRepresentation.title, bodyText: entryRepresentation.bodyText, date: entryRepresentation.date, mood: MoodType(rawValue: entryRepresentation.mood)!, identity: entryRepresentation.identity, context: manageObjectContext)
+    }
 }
 
 

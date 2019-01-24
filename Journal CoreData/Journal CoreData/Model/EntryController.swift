@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class EntryController {
     
@@ -26,11 +27,11 @@ class EntryController {
     
     
     
-    func update(entry: Entry, title: String, bodytext: String, date: Date = Date(), mood: String){
-        entry.title = title
-        entry.bodyText = bodytext
-        entry.date = date
-        entry.mood = mood
+    func update(entry: Entry, entryRepresentation: EntryRepresentation){
+        entry.title = entryRepresentation.title
+        entry.bodyText = entryRepresentation.bodyText
+        entry.date = entryRepresentation.date
+        entry.mood = entryRepresentation.mood
         
         put(entry: entry)
     }
@@ -82,6 +83,12 @@ extension EntryController {
             completionHandler(nil)
         }.resume()
         
+    }
+    
+    func fetchSingleEntryFromPersisitenceStore(identity: UUID) -> Entry?{
+        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identity == %@", identity as NSUUID)
+        return (try? moc.fetch(fetchRequest))?.first
     }
     
 }
