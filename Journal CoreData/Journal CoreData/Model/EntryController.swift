@@ -11,6 +11,10 @@ import CoreData
 
 class EntryController {
     
+    init(){
+        fetchEntriesFromServer()
+    }
+    
     typealias CompletionHandler = (Error?) -> Void
     let baseURL = URL(string: "https://journal-coredata-3d3fc.firebaseio.com/")!
     let moc = CoreDataStack.shared.mainContext
@@ -25,7 +29,12 @@ class EntryController {
         }
     }
     
-    
+    func updateEntry(entry: Entry, title: String, bodytext: String, mood: String, date: Date = Date() ){
+        entry.title = title
+        entry.bodyText = bodytext
+        entry.mood = mood
+        entry.date = date
+    }
     
     func update(entry: Entry, entryRepresentation: EntryRepresentation){
         entry.title = entryRepresentation.title
@@ -91,4 +100,38 @@ extension EntryController {
         return (try? moc.fetch(fetchRequest))?.first
     }
     
+    func fetchEntriesFromServer(completionHandler: @escaping CompletionHandler = {_ in}) {
+        let url = baseURL.appendingPathExtension("json")
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard let data = data else {
+                NSLog("Data not found on database")
+                completionHandler(NSError())
+                return
+            }
+            
+            if let error = error {
+                NSLog("Error fetching data task: \(error)")
+                completionHandler(error)
+                return
+            }
+            
+            do{
+                let entryRepresetationDict = try JSONDecoder().decode([String: EntryRepresentation].self, from: data)
+                let entryRepresentations = Array(entryRepresetationDict.values)
+                for entryRep in entryRepresentations {
+                    if let entry = self.fetchSingleEntryFromPersisitenceStore(identity: entryRep.identity){
+                        self.update(entry: entry, entryRepresentation: entryRep)
+                    }else {
+                        let _ = Entry(entryRepresentation: entryRep)
+                    }
+                }
+                self.saveToPersistence()
+                completionHandler(nil)
+            }catch{
+                NSLog("Error occured trying to retrieve data from dataBase \(error)")
+                completionHandler(error)
+                return
+            }
+        }.resume()
+    }
 }
