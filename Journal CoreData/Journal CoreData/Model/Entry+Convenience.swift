@@ -19,5 +19,22 @@ extension Entry{
         self.mood = mood.rawValue
         self.identity = identity
         
+        
     }
 }
+
+
+//extension Entry {
+//
+//
+//    var newIdentity: UUID {
+//
+//        get {
+//            return identity ?? UUID()
+//        }
+//
+//        set {
+//            identity = newValue
+//        }
+//    }
+//}

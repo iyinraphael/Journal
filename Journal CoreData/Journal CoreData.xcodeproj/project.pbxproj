@@ -20,6 +20,7 @@
 		EBAF276721F7C20A0055AF47 /* MoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF276621F7C20A0055AF47 /* MoodType.swift */; };
 		EBAF276921F7C5C50055AF47 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF276821F7C5C50055AF47 /* EntryController.swift */; };
 		EBAF276C21F918D30055AF47 /* Entry+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF276B21F918D30055AF47 /* Entry+Encodable.swift */; };
+		EBAF276E21F96EEA0055AF47 /* EntryRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF276D21F96EEA0055AF47 /* EntryRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EBAF276821F7C5C50055AF47 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntryController.swift; path = "Journal CoreData/Model/EntryController.swift"; sourceTree = SOURCE_ROOT; };
 		EBAF276A21F9177A0055AF47 /* Journal_CoreData 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Journal_CoreData 3.xcdatamodel"; sourceTree = "<group>"; };
 		EBAF276B21F918D30055AF47 /* Entry+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+Encodable.swift"; sourceTree = "<group>"; };
+		EBAF276D21F96EEA0055AF47 /* EntryRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				EB8379322159B5F00018693E /* Entry+Convenience.swift */,
 				EBAF276621F7C20A0055AF47 /* MoodType.swift */,
 				EBAF276B21F918D30055AF47 /* Entry+Encodable.swift */,
+				EBAF276D21F96EEA0055AF47 /* EntryRepresentation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				EB8379192159A3980018693E /* AppDelegate.swift in Sources */,
 				EB8379212159A3980018693E /* Journal_CoreData.xcdatamodeld in Sources */,
 				EB8379392159C27A0018693E /* EntryDetailViewController.swift in Sources */,
+				EBAF276E21F96EEA0055AF47 /* EntryRepresentation.swift in Sources */,
 				EBAF276C21F918D30055AF47 /* Entry+Encodable.swift in Sources */,
 				EB8379352159B9920018693E /* EntriesTableViewController.swift in Sources */,
 			);

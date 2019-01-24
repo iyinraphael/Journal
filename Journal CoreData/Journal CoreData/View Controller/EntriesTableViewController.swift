@@ -43,16 +43,7 @@ class EntriesTableViewController: UITableViewController, NSFetchedResultsControl
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
              let entry = fetchedRedsultsController.object(at: indexPath)
-            moc.delete(entry)
-            do{
-                try moc.save()
-                //tableView.reloadData()
-            }
-            catch{
-                moc.reset()
-                NSLog("Error saving managed object context\(error)")
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            entryController.delete(entry)
         }
     }
 
@@ -137,5 +128,5 @@ class EntriesTableViewController: UITableViewController, NSFetchedResultsControl
 //        }
 //    }
 
-
+     let entryController = EntryController()
 }

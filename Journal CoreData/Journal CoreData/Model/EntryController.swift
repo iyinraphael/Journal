@@ -19,6 +19,7 @@ class EntryController {
         do {
            try moc.save()
         } catch {
+            moc.reset()
             NSLog("Error occur trying to save to context \(error)")
         }
     }
@@ -32,6 +33,12 @@ class EntryController {
         entry.mood = mood
         
         put(entry: entry)
+    }
+    
+    func delete(_ entry: Entry){
+        deleteEntryFromServer(entry: entry)
+        moc.delete(entry)
+        saveToPersistence()
     }
 }
 
@@ -62,19 +69,18 @@ extension EntryController {
     }
 
 
-    func deleteEntryFromServer(entry: Entry, completionHandler: @escaping CompletionHandler){
-        let identifier = entry.identity!
-        let url = baseURL.appendingPathComponent(identifier.uuidString)
+    func deleteEntryFromServer(entry: Entry, completionHandler: @escaping CompletionHandler = {_ in }){
+        let url = baseURL.appendingPathComponent(entry.identity!.uuidString)
                         .appendingPathExtension("json")
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "DELETE"
         URLSession.shared.dataTask(with: urlRequest) { (_, _, error) in
             if let error = error {
                 NSLog("Error putting data to server: \(error)")
-                comp
+                completionHandler(error)
             }
             completionHandler(nil)
-        }
+        }.resume()
         
     }
     
